@@ -16,7 +16,7 @@ function Main() {
         window.addEventListener('resize',handleresize);
     },[])
   return (
-    <div className='w-full h-full bg-green-600'>
+    <div className='w-full h-full m-0 p-0 relative'>
          {ismobile?(<Mobile />):(<Desktop />)}
     </div>
   )

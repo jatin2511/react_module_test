@@ -2,7 +2,7 @@ import React from 'react'
 
 function Maincontent() {
   return (
-    <div className={`h-full`}>Maincontent</div>
+    <div className='h-full w-full'>Maincontent</div>
   )
 }
 
