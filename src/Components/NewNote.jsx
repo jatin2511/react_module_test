@@ -7,10 +7,16 @@ function NewNote({ setIsModalOpen, setNotes, Notes }) {
   const [selectedColor, setselectedcolor] = useState('#0047FF');
 
   function handlecreate() {
-    const updatedNotes = { ...Notes, [newnote]: { color: selectedColor } };
+    if(newnote.length>1){
+      const updatedNotes = { ...Notes, [newnote]: { color: selectedColor } };
     setNotes(updatedNotes);
     localStorage.setItem('Notes', JSON.stringify(updatedNotes));
     setIsModalOpen(false);
+  }
+  else{
+    alert('Group name must contain atleast 2 characters')
+  }
+    
   }
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import Maincontent from '../Components/Maincontent'
-
 function Desktop() {
   return (
     <div className='h-full w-full flex'>
