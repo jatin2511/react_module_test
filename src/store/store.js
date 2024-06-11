@@ -1,5 +1,10 @@
 import {createStore} from 'redux'
 import mobilereducer from '../reducers/ismobilereducer'
-
-const store =createStore(mobilereducer);
+import notereducer from '../reducers/notereducer'
+import { combineReducers } from 'redux';
+const rootreducer=combineReducers({
+    ismobile:mobilereducer,
+    notedisplay:notereducer
+})
+const store =createStore(rootreducer);
 export default store;

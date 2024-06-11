@@ -7,7 +7,7 @@ import Mobile from './Mobile'
 import setview from '../actions/Ismobileaction'
 
 function Main() {
-    const ismobile=useSelector(store=>store)
+    const ismobile=useSelector(store=>store.ismobile)
     const dispatch=useDispatch();
     useEffect(()=>{
         function handleresize(){

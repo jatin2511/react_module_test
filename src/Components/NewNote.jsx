@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function NewNote({ setIsModalOpen, setNotes, Notes }) {
-  const ismobile = useSelector((store) => store);
+  const ismobile = useSelector((store) => store.ismobile);
   const [newnote, setnewnote] = useState('');
   const [selectedColor, setselectedcolor] = useState('#0047FF');
 
