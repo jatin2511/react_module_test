@@ -15,3 +15,6 @@
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
+.textwrap{
+  text-wrap:wrap;
+}

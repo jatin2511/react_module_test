@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  initialize from '../actions/Noteaction'
 
 function Sidebar({setsidebardisp}) {
+  const [keyclicked,setkeyclicked]=useState('');
   const Notes=useSelector(store=>store.Notes)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function Sidebar({setsidebardisp}) {
       notekey: key,
       value: Notes[key]
     }
+    setkeyclicked(key);
     dispatch(displaynote(notetodisplay))
     setsidebardisp(false);
   }
@@ -42,7 +44,7 @@ function Sidebar({setsidebardisp}) {
       <div className='w-full md:py-10 py-5'>
         {Object.keys(Notes).length > 0 ? (
           Object.entries(Notes).map(([key, note]) => (
-            <div key={key} className='flex w-full p-2 ml-5 items-center border-2 rounded-l-3xl cursor-pointer' onClick={() => { handledisplaynote(key)}}>
+            <div key={key} className={`flex w-full p-2 ml-5 items-center  ${keyclicked===key?'bg-[#F7ECDC]':''} rounded-l-3xl cursor-pointer`} onClick={() => { handledisplaynote(key)}}>
               <div className='mr-2 h-10 w-10 rounded-[50%] flex justify-center items-center text-2xl text-white font-medium md:h-14 md:w-14 md:text-3xl' style={{ backgroundColor: note.color }}>{key.substr(0, 2)}</div>
               <div className='text-2xl md:text-3xl font-normal'>{key}</div>
             </div>
