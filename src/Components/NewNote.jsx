@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import intitialize from '../actions/Noteaction';
 
-function NewNote({ setIsModalOpen, setNotes, Notes }) {
+function NewNote({ setIsModalOpen }) {
+  const Notes=useSelector(store=>store.Notes)
   const ismobile = useSelector((store) => store.ismobile);
   const [newnote, setnewnote] = useState('');
   const [selectedColor, setselectedcolor] = useState('#0047FF');
-
+  const dispatch=useDispatch();
   function handlecreate() {
     if(newnote.length>1){
       const updatedNotes = { ...Notes, [newnote]: { color: selectedColor,content:[{}]} };
-    setNotes(updatedNotes);
+    dispatch(intitialize(updatedNotes))
     localStorage.setItem('Notes', JSON.stringify(updatedNotes));
     setIsModalOpen(false);
   }

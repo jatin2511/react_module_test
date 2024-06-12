@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react';
 import NewNote from './NewNote';
 import displaynote from '../actions/notes';
 import { useDispatch, useSelector } from 'react-redux';
-import Maincontent from './Maincontent';
+import  initialize from '../actions/Noteaction'
 
 function Sidebar({setsidebardisp}) {
-  const ismobile = useSelector(store => store.ismobile)
+  const Notes=useSelector(store=>store.Notes)
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [Notes, setNotes] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
     const storedNotesString = localStorage.getItem('Notes');
     if (storedNotesString) {
       try {
         const storedNotes = JSON.parse(storedNotesString);
-        setNotes(storedNotes);
+        dispatch(initialize(storedNotes));
       } catch (error) {
         console.error('Error parsing stored notes:', error);
       }
@@ -52,7 +51,7 @@ function Sidebar({setsidebardisp}) {
           <div className='mx-10 my-10'>No notes available</div>
         )}
       </div>
-      {isModalOpen && <NewNote Notes={Notes} setIsModalOpen={setIsModalOpen} setNotes={setNotes} />}
+      {isModalOpen && <NewNote setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 }
