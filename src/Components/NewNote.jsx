@@ -8,7 +8,7 @@ function NewNote({ setIsModalOpen, setNotes, Notes }) {
 
   function handlecreate() {
     if(newnote.length>1){
-      const updatedNotes = { ...Notes, [newnote]: { color: selectedColor } };
+      const updatedNotes = { ...Notes, [newnote]: { color: selectedColor,content:[{}]} };
     setNotes(updatedNotes);
     localStorage.setItem('Notes', JSON.stringify(updatedNotes));
     setIsModalOpen(false);
