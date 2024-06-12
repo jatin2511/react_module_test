@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import Sidebar from '../Components/Sidebar'
-import Maincontent from '../Components/Maincontent'
 import { useDispatch,useSelector } from 'react-redux'
 import Desktop from './Desktop'
 import Mobile from './Mobile'
@@ -10,6 +8,7 @@ function Main() {
     const ismobile=useSelector(store=>store.ismobile)
     const dispatch=useDispatch();
     useEffect(()=>{
+      dispatch(setview(`${window.innerWidth<600?'mobile':'desktop'}`));
         function handleresize(){
             dispatch(setview(`${window.innerWidth<600?'mobile':'desktop'}`))
         }
